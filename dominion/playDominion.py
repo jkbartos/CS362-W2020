@@ -9,17 +9,17 @@ import Dominion
 import random
 from collections import defaultdict
 
-#Get player names
-player_names = ["Annie","*Ben","*Carla"]
+# Get player names
+player_names = ["Jordan", "*Ben", "*Carla"]
 
-#number of curses and victory cards
+# number of curses and victory cards
 if len(player_names)>2:
     nV=12
 else:
     nV=8
 nC = -10 + 10 * len(player_names)
 
-#Define box
+# Define box
 box = {}
 box["Woodcutter"]=[Dominion.Woodcutter()]*10
 box["Smithy"]=[Dominion.Smithy()]*10
@@ -53,14 +53,14 @@ supply_order = {0:['Curse','Copper'],2:['Estate','Cellar','Chapel','Moat'],
                 5:['Duchy','Market','Council Room','Festival','Laboratory','Library','Mine','Witch'],
                 6:['Gold','Adventurer'],8:['Province']}
 
-#Pick 10 cards from box to be in the supply.
+# Pick 10 cards from box to be in the supply.
 boxlist = [k for k in box]
 random.shuffle(boxlist)
 random10 = boxlist[:10]
 supply = defaultdict(list,[(k,box[k]) for k in random10])
 
 
-#The supply always has these cards
+# The supply always has these cards
 supply["Copper"]=[Dominion.Copper()]*(60-len(player_names)*7)
 supply["Silver"]=[Dominion.Silver()]*40
 supply["Gold"]=[Dominion.Gold()]*30
@@ -69,10 +69,10 @@ supply["Duchy"]=[Dominion.Duchy()]*nV
 supply["Province"]=[Dominion.Province()]*nV
 supply["Curse"]=[Dominion.Curse()]*nC
 
-#initialize the trash
+# initialize the trash
 trash = []
 
-#Costruct the Player objects
+# Costruct the Player objects
 players = []
 for name in player_names:
     if name[0]=="*":
@@ -82,7 +82,7 @@ for name in player_names:
     else:
         players.append(Dominion.Player(name))
 
-#Play the game
+# Play the game
 turn  = 0
 while not Dominion.gameover(supply):
     turn += 1    
@@ -102,7 +102,7 @@ while not Dominion.gameover(supply):
             player.turn(players,supply,trash)
             
 
-#Final score
+# Final score
 dcs=Dominion.cardsummaries(players)
 vp=dcs.loc['VICTORY POINTS']
 vpmax=vp.max()

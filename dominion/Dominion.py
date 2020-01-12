@@ -10,6 +10,7 @@ from operator import itemgetter
 import re
 import pandas
 
+
 class Card():
     def __init__(self,name,category,cost,buypower,vpoints):
         self.name = name
@@ -17,48 +18,60 @@ class Card():
         self.cost = cost
         self.buypower = buypower
         self.vpoints = vpoints
+
     def react(self,player):
         return False
+
 
 class Coin_card(Card):
     def __init__(self,name,cost,buypower):
         Card.__init__(self,name,"coin",cost,buypower,0)
 
+
 class Copper(Coin_card):
     def __init__(self):
         Coin_card.__init__(self,"Copper",0,1)
-        
+
+
 class Silver(Coin_card):
     def __init__(self):
         Coin_card.__init__(self,"Silver",3,2)
-        
+
+
 class Gold(Coin_card):
     def __init__(self):
         Coin_card.__init__(self,"Gold",6,3)
+
 
 class Victory_card(Card):
     def __init__(self,name,cost,vpoints):
         Card.__init__(self,name,"victory",cost,0,vpoints)
 
+
 class Estate(Victory_card):
     def __init__(self):
         Victory_card.__init__(self,"Estate",2,1)
-        
+
+
 class Duchy(Victory_card):
     def __init__(self):
         Victory_card.__init__(self,"Duchy",5,3)
-    
+
+
 class Province(Victory_card):
     def __init__(self):
         Victory_card.__init__(self,"Province",8,6)
+
 
 class Gardens(Victory_card):
     def __init__(self):
         Victory_card.__init__(self,"Gardens",4,0)
 
+
 class Curse(Card):
     def __init__(self):
         Card.__init__(self,"Curse","curse",0,0,-1)
+
 
 class Action_card(Card):
     def __init__(self,name,cost,actions,cards,buys,coins):
@@ -67,25 +80,31 @@ class Action_card(Card):
         self.cards = cards
         self.buys = buys
         self.coins = coins
+
     def use(self,player,trash):
         player.played.append(self)
         player.hand.remove(self)
+
     def augment(self,player):
         player.actions+=self.actions
         player.buys+=self.buys
         player.purse+=self.coins
         for i in range(self.cards):
             player.draw()
+
     def play(self,player,players,supply,trash):
         pass
-    
+
+
 class Woodcutter(Action_card):
     def __init__(self):
         Action_card.__init__(self,"Woodcutter",3,0,0,1,2)
 
+
 class Smithy(Action_card):
     def __init__(self):
         Action_card.__init__(self,"Smithy",4,0,3,0,0)
+
 
 class Laboratory(Action_card):
     def __init__(self):
@@ -157,7 +176,7 @@ class Cellar(Action_card):
                 player.hand.remove(c)
                 discarded+=1
         for j in range(discarded):
-            player.draw()
+            player.draw(o
 
 class Remodel(Action_card):
     def __init__(self):
