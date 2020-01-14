@@ -176,7 +176,7 @@ class Cellar(Action_card):
                 player.hand.remove(c)
                 discarded+=1
         for j in range(discarded):
-            player.draw(o
+            player.draw()
 
 class Remodel(Action_card):
     def __init__(self):
