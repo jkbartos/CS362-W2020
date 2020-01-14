@@ -3,7 +3,7 @@
 Created on Sun Jan 12 16:41:00 2020
 
 @author: Jordan Bartos (ONID: bartosj)
-This test case starts the game with way too many Province cards
+This test case replaces all of the Gold cards in the supply with Silver cards
 """
 
 import Dominion
@@ -14,7 +14,7 @@ supply_order = testUtility.get_supply_order()
 supply = testUtility.get_supply()
 players = testUtility.get_players()
 trash = testUtility.get_trash()
-supply["Province"] += [Dominion.Province() for x in range(200)]
+supply["Gold"] = [Dominion.Silver() for x in range(20)]
 
 
 
