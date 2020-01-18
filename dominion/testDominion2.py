@@ -10,13 +10,16 @@ import Dominion
 import testUtility
 
 
+# get the standard and correct box, supply_order, supply, trash, and players objects from testUtility.py
 supply_order = testUtility.get_supply_order()
 supply = testUtility.get_supply()
 players = testUtility.get_players()
 trash = testUtility.get_trash()
+
+# remove all Gold cards and replace them with Silvers instead
 supply["Gold"] = [Dominion.Silver() for x in range(20)]
-
-
+# make the first player human-playable so that I can force purchasing of Golds for testing
+players[0] = Dominion.Player("Jordan")
 
 # Play the game
 turn = 0

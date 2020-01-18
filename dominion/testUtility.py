@@ -2,7 +2,7 @@ import Dominion
 import random
 from collections import defaultdict
 
-player_names = ["Jordan", "*Ben", "*Carla"]
+player_names = ["*Jordan", "*Ben", "*Carla"]
 
 
 def get_supply_order():

@@ -11,16 +11,21 @@ import testUtility
 import random
 
 
+# get the standard and correct box, supply_order, supply, trash, and players objects from testUtility.py
 box = testUtility.get_box()
 supply_order = testUtility.get_supply_order()
 supply = testUtility.get_supply()
 players = testUtility.get_players()
+trash = testUtility.get_trash()
+
+# generate 17 additional players with randomized names and add them to the players object
+# this makes a total of 20 players, but the game should only be played with up to 4
 for i in range(17):
     player = chr(random.randint(65, 90))
     for i in range(0, 7):
         player += chr(random.randint(97,122))
     players.append(Dominion.ComputerPlayer(player))
-trash = testUtility.get_trash()
+
 
 # Play the game
 turn = 0
