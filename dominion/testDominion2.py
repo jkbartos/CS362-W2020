@@ -17,7 +17,7 @@ players = testUtility.get_players()
 trash = testUtility.get_trash()
 
 # remove all Gold cards and replace them with Silvers instead
-supply["Gold"] = [Dominion.Silver() for x in range(20)]
+supply["Gold"] = [Dominion.Silver() for x in range(30)]
 # make the first player human-playable so that I can force purchasing of Golds for testing
 players[0] = Dominion.Player("Jordan")
 
